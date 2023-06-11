@@ -1,0 +1,23 @@
+<button *ngIf="!gameStarted" (click)="startGame()">Iniciar Juego</button>
+<div *ngIf="gameStarted"></div>
+
+<h1>Juego de Memoria</h1>
+
+<div class="board">
+  <div *ngFor="let card of cards" (click)="flipCard(card)">
+    <div class="card" [class.flipped]="card.flipped">
+      <div class="front"></div>
+      <div class="back">
+        <img [src]="card.value" alt="Escudo del equipo">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="score">
+  Intentos: {{ attempts }}
+</div>
+
+<div *ngIf="gameOver" class="message">
+  ¡Felicidades, has ganado!
+</div>
